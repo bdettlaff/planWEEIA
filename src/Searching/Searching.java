@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Searching {
+
+    private static ArrayList<String> listOfLessons = new ArrayList<String>();
 
     public void openFile(){
         FileReader fr = null;
@@ -80,14 +83,9 @@ public class Searching {
             }
 
             result = result + Line.substring(beginningIndex+2,endingIndex-1)+",";
-
-            System.out.println(result);
+            addLessonToArrayList(result);
         }
-
-
     }
-
-
 
     public static Integer switchDayOfWeek(String day){
 
@@ -119,5 +117,13 @@ public class Searching {
             return 0;
         }
 
+    }
+
+    public ArrayList<String> getListOfLessons() {
+        return listOfLessons;
+    }
+
+    public static void addLessonToArrayList(String lesson){
+        listOfLessons.add(lesson);
     }
 }

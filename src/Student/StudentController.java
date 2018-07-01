@@ -60,6 +60,18 @@ public class StudentController implements Initializable {
     }
 
     public void insertButtonsTest() {
+
+        Searching searching = new Searching();
+        searching.openFile();
+        ArrayList<String> listOfLessons = new ArrayList<String>();
+        int dayOfWeek=0;
+        int hourOfLessonBeginning=0;
+        int hourOfLessonEnding=0;
+        int endOfNameOfLesson=0;
+
+        listOfLessons=searching.getListOfLessons();
+
+
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 13; j++) {
                 if (j == 0 && i!=0) {
@@ -76,7 +88,7 @@ public class StudentController implements Initializable {
                     btn[i][j].setPrefSize(165, 60);
                     schedule.add(btn[i][j], i, j);
                 } else {
-                    btn[i][j] = new Button("1-15\n Podstawy programowania\n II i24 CTI406\n Cisłak A.");
+                    btn[i][j] = new Button("");
                     btn[i][j].setPrefSize(165, 60);
                     schedule.add(btn[i][j], i, j);
                 }
@@ -84,8 +96,45 @@ public class StudentController implements Initializable {
             }
         }
 
-        Searching test = new Searching();
-        test.openFile();
+        listOfLessons=searching.getListOfLessons();
+
+        int counterOfCommas = 0;
+        char signComma = ',';
+
+        for(int z=0;z<listOfLessons.size();z++) {
+            counterOfCommas=0;
+            String lesson = listOfLessons.get(z);
+            int i=0;
+                while (counterOfCommas < 4) {
+                    if (lesson.charAt(i) == signComma) {
+                        counterOfCommas++;
+                    }
+                    if (counterOfCommas == 1 && i == 1) {
+                        dayOfWeek = i-1;
+                    } else if (counterOfCommas == 2 && i == 3) {
+                        hourOfLessonBeginning = i-1;
+                    } else if (counterOfCommas == 3 && i == 5) {
+                        hourOfLessonEnding= i-1;
+                    } else if (counterOfCommas == 4 && i > 5) {
+                        endOfNameOfLesson = i;
+                    }
+                    i++;
+                }
+            System.out.println(z+" to jest lekcja,"+dayOfWeek+","+hourOfLessonBeginning+","+hourOfLessonEnding+","+lesson);
+            hourOfLessonBeginning = Integer.parseInt(lesson.substring(hourOfLessonBeginning,hourOfLessonBeginning+1));
+            hourOfLessonEnding = Integer.parseInt(lesson.substring(hourOfLessonEnding,hourOfLessonEnding+1));
+            dayOfWeek = Integer.parseInt(lesson.substring(dayOfWeek, dayOfWeek + 1));
+
+
+            if(hourOfLessonBeginning != 0 || hourOfLessonEnding != 0 ) {
+                for (int j = hourOfLessonBeginning; j < hourOfLessonEnding; j++) {
+                    btn[dayOfWeek][j] = new Button(lesson.substring(hourOfLessonEnding + 2, endOfNameOfLesson));
+                    btn[dayOfWeek][j].setPrefSize(165, 60);
+                    schedule.add(btn[dayOfWeek][j], dayOfWeek, j);
+                    System.out.println("TU JESTEM");
+                }
+            }
+        }
     }
 
 
