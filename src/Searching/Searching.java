@@ -1,48 +1,12 @@
 package Searching;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Searching {
 
-    private static ArrayList<String> listOfLessons = new ArrayList<String>();
-
-    public void openFile(){
-        FileReader fr = null;
-        String linia = "";
-
-        try {
-            fr = new FileReader("18june06.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("BŁĄD PRZY OTWIERANIU PLIKU!");
-            System.exit(1);
-        }
-
-        BufferedReader bfr = new BufferedReader(fr);
-                    try {
-            while((linia = bfr.readLine()) != null){
-                Searching.searchForLesson("4I01",linia);
-            }
-        } catch (IOException e) {
-            System.out.println("BŁĄD ODCZYTU Z PLIKU!");
-            System.exit(2);
-        }
-
-        try {
-            fr.close();
-        } catch (IOException e) {
-            System.out.println("BŁĄD PRZY ZAMYKANIU PLIKU!");
-            System.exit(3);
-        }
-    }
 
     public static void searchForLesson(String Sheet, String Line){
-
         Pattern patternLine = Pattern.compile(Sheet);
         Matcher matcherLine = patternLine.matcher(Line);
         String result="";
@@ -55,15 +19,11 @@ public class Searching {
 
         if(matcherLine.find()){
             String day = Line.substring(1,3);
-            //System.out.println(day);
             result = Searching.switchDayOfWeek(day).toString()+",";
 
             indexBeforeTime = Line.indexOf(" ");
-            //System.out.println(Line.substring(indexBeforeTime+1,indexBeforeTime+2));
 
             result = result + Searching.switchTime(Line.substring(indexBeforeTime+1,indexBeforeTime+3)) + "," + Searching.switchTime(Line.substring(indexBeforeTime+7,indexBeforeTime+9))+ ",";
-            //System.out.println("TEST:" + result);
-        //To trzeba będzie zmienić w pizdu
 
            while(counterOfSemicolons<4) {
 
