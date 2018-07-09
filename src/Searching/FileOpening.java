@@ -8,28 +8,32 @@ import java.io.IOException;
 public class FileOpening {
 
     public void openFile(String group){
-        FileReader fr = null;
-        String linia = "";
+        FileReader fileReader = null;
+        String line;
+
+        Searching searching = new Searching();
 
         try {
-            fr = new FileReader("18june06.txt");
+            fileReader = new FileReader("18june06.txt");
         } catch (FileNotFoundException e) {
             System.out.println("BŁĄD PRZY OTWIERANIU PLIKU!");
             System.exit(1);
         }
 
-        BufferedReader bfr = new BufferedReader(fr);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
         try {
-            while((linia = bfr.readLine()) != null){
-                Searching.searchForLesson(group,linia);
+            while((line = bufferedReader.readLine()) != null){
+                searching.searchForLesson(group,line);
             }
         } catch (IOException e) {
             System.out.println("BŁĄD ODCZYTU Z PLIKU!");
             System.exit(2);
         }
 
+        searching.printListOfLessons();
+
         try {
-            fr.close();
+            fileReader.close();
         } catch (IOException e) {
             System.out.println("BŁĄD PRZY ZAMYKANIU PLIKU!");
             System.exit(3);
