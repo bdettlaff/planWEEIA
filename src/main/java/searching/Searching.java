@@ -1,4 +1,4 @@
-package Searching;
+package searching;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Searching {
 
-    private static ArrayList<String> listOfLessons = new ArrayList<>();
+    private static ArrayList<String> listOfLessons = new ArrayList();
 
     public void searchForLesson(String Sheet, String Line) {
         Pattern patternLine = Pattern.compile(Sheet);

@@ -1,4 +1,4 @@
-package Lecturer;
+package lecturer;
 
 public class LecturerController {
 }

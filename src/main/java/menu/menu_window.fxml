@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="379.0" prefWidth="443.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.MenuController">
+<AnchorPane prefHeight="379.0" prefWidth="443.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MenuController">
    <children>
       <ImageView fitHeight="106.0" fitWidth="222.0" layoutX="112.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('file:Images/logoWEEIA.png');" />
       <Button fx:id="studentButton" layoutX="189.0" layoutY="165.0" mnemonicParsing="false" onMouseClicked="#studentButton_onMouseClicked" text="STUDENT" />

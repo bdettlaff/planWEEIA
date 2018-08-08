@@ -1,4 +1,4 @@
-package Menu;
+package menu;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     private void studentButton_onMouseClicked(MouseEvent event) throws IOException{
         Parent window1;
-        window1 = FXMLLoader.load(getClass().getResource("/Student/student_window.fxml"));
+        window1 = FXMLLoader.load(getClass().getResource("/student/student_window.fxml"));
         Scene newSceneWindow1 = new Scene(window1);
         Stage mainStage;
         mainStage = Main.getPrimaryStage();
@@ -26,7 +26,7 @@ public class MenuController {
     @FXML
     private void lecturerButton_onMouseClicked(MouseEvent event) throws IOException{
         Parent window1;
-        window1 = FXMLLoader.load(getClass().getResource("/Lecturer/lecturer_window.fxml"));
+        window1 = FXMLLoader.load(getClass().getResource("/lecturer/lecturer_window.fxml"));
         Scene newSceneWindow1 = new Scene(window1);
         Stage mainStage;
         mainStage = Main.getPrimaryStage();

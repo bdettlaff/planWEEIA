@@ -1,7 +1,7 @@
-package Student;
+package student;
 
-import Searching.FileOpening;
-import Searching.Searching;
+import searching.FileOpening;
+import searching.Searching;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

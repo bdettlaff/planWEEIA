@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="857.0" prefWidth="1012.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Student.StudentController">
+<AnchorPane prefHeight="857.0" prefWidth="1012.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.StudentController">
    <children>
       <ComboBox fx:id="listOfGroupsComboBox" layoutX="418.0" layoutY="56.0" prefWidth="150.0" promptText="Wybierz grupę" />
       <GridPane fx:id="schedule" layoutX="9.0" layoutY="91.0" prefHeight="730.0" prefWidth="992.0">
