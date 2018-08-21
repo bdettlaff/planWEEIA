@@ -6,6 +6,12 @@ public class ListOfLessons {
     private String[] temporaryStringArray;
     private List<String> neededElementsFromTemporaryStringArray = new ArrayList<String>();
 
+    public List<String> getElementsWithoutQuotationMarks() {
+        return elementsWithoutQuotationMarks;
+    }
+
+    private List<String> elementsWithoutQuotationMarks = new ArrayList<String>();
+
 
     public List<String> getNeededElementsFromTemporaryStringArray() {
         return neededElementsFromTemporaryStringArray;
@@ -36,5 +42,12 @@ public class ListOfLessons {
         neededElementsFromTemporaryStringArray.add(temporaryStringArray[7]);
     }
 
+    public void deleteQuotationMarksFromStrings(){
+        String temporaryString;
+        for(int i=0; i<neededElementsFromTemporaryStringArray.size(); i++){
+            temporaryString=neededElementsFromTemporaryStringArray.get(i).replace("\"","");
+            elementsWithoutQuotationMarks.add(temporaryString);
+        }
+    }
 
 }
