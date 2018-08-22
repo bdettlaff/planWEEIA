@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
     private static Stage primaryStage;
+
 
     private void setPrimaryStage(Stage stage) {
         Main.primaryStage = stage;
@@ -18,9 +20,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("menu_window.fxml"));
+        FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("/menu_window.fxml"));
         Parent firstPane = firstPaneLoader.load();
         Scene firstScene = new Scene(firstPane);
        // primaryStage.getIcons().add(new Image("Images/test.png"));
@@ -29,7 +31,6 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         this.setPrimaryStage(primaryStage);
         primaryStage.show();
-
     }
 
 

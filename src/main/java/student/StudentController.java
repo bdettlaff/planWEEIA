@@ -15,11 +15,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class StudentController implements Initializable {
+
     @FXML
     private ComboBox<String> listOfGroupsComboBox;
 
     @FXML
     private GridPane schedule;
+
 
     private Button[][] btn = new Button[6][13];
 
@@ -53,7 +55,7 @@ public class StudentController implements Initializable {
                     "4I06"
             );
 
-    @Override
+
     public void initialize(URL location, ResourceBundle resources) {
         listOfGroupsComboBox.setItems(listOfGroups);
         insertButtonsTest();
