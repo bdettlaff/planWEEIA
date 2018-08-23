@@ -9,6 +9,15 @@ public class ConverterCsvToObjects {
     private List<String> elementsWithoutQuotationMarks = new ArrayList<String>();
     private String[] dateList;
 
+    private int typeOfWeek;
+
+    public void setTypeOfWeek(int typeOfWeek) {
+        this.typeOfWeek = typeOfWeek;
+    }
+
+    public int getTypeOfWeek() {
+        return typeOfWeek;
+    }
 
     public String[] getDateList() {
         return dateList;
@@ -58,5 +67,15 @@ public class ConverterCsvToObjects {
     public void splitDate() {
         String temporaryString = elementsWithoutQuotationMarks.get(0);
         setDateList(temporaryString.split(" "));
+    }
+
+    public void convertDotsIntoTypeOfWeek(){
+        int occurrence =  getElementsWithoutQuotationMarks().get(1).length() - getElementsWithoutQuotationMarks().get(1).replace(".", "").length();
+
+        if(occurrence == 1){
+            setTypeOfWeek(1);
+        }else{
+            setTypeOfWeek(2);
+        }
     }
 }

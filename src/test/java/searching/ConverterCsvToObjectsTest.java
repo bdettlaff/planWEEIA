@@ -1,5 +1,6 @@
 package searching;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class ConverterCsvToObjectsTest {
     @Before
     public void setUp() {
         this.listOfLessons = new ConverterCsvToObjects();
-        listOfLessons.splitStringFromCsv("\"Pn 08:15-10:00 1-8\";\"w 1-8\";\"f\";\"Metodologia projektowania\";\"2E418\";\"Glaba M\";\"\";\"6ET.PE\";\"\";\"N\";\"N\";\"\"");
+        listOfLessons.splitStringFromCsv("\"Pn 08:15-10:00 1-8\";\"w. 1-8\";\"f\";\"Metodologia projektowania\";\"2E418\";\"Glaba M\";\"\";\"6ET.PE\";\"\";\"N\";\"N\";\"\"");
         listOfLessons.selectNeededStringsFromTemporaryList();
         listOfLessons.deleteQuotationMarksFromStrings();
         listOfLessons.splitDate();
@@ -54,6 +55,7 @@ public class ConverterCsvToObjectsTest {
 
     @Test
     public void shouldReturnTrueIfTypeOfWeekIsX1() {
-
+        listOfLessons.convertDotsIntoTypeOfWeek();
+        assertTrue(listOfLessons.getTypeOfWeek()==1);
     }
 }
