@@ -44,7 +44,6 @@ public class Searching {
             result = result + Line.substring(beginningIndex + 2, endingIndex - 1) + ",";
             addLessonToArrayList(result);
         }
-
     }
 
     public static Integer switchDayOfWeek(String day) {

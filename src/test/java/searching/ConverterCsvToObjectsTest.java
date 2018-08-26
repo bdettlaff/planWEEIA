@@ -10,7 +10,6 @@ public class ConverterCsvToObjectsTest {
 
     private ConverterCsvToObjects listOfLessons;
 
-
     @Before
     public void setUp() {
         this.listOfLessons = new ConverterCsvToObjects();
@@ -18,6 +17,10 @@ public class ConverterCsvToObjectsTest {
         listOfLessons.selectNeededStringsFromTemporaryList();
         listOfLessons.deleteQuotationMarksFromStrings();
         listOfLessons.splitDate();
+        listOfLessons.convertDotsIntoTypeOfWeek();
+        listOfLessons.splitHours();
+        listOfLessons.gettingTypeOfLessonFromString();
+
     }
 
     @Test
@@ -55,7 +58,31 @@ public class ConverterCsvToObjectsTest {
 
     @Test
     public void shouldReturnTrueIfTypeOfWeekIsX1() {
-        listOfLessons.convertDotsIntoTypeOfWeek();
         assertTrue(listOfLessons.getTypeOfWeek()==1);
+    }
+
+    @Test
+    public void shouldReturnTrueIfStartAndEndTimeIsSplit(){
+        assertTrue(listOfLessons.getTimeOfBeginningAndEnding()[0].equals("08:15") && listOfLessons.getTimeOfBeginningAndEnding()[1].equals("10:00"));
+    }
+
+    @Test
+    public void shouldReturnTrueIfTypeOfLessonIsW(){
+        assertTrue(listOfLessons.getTypeOfLesson().equals("w"));
+    }
+
+    @Test
+    public void shouldReturnTrueIfObjectHasProperNamesOnTheAppropriateFields(){
+        listOfLessons.createObject();
+        assertTrue(listOfLessons.getLesson().getDayOfWeek().equals("Pn"));
+        assertTrue(listOfLessons.getLesson().getStartTime().equals("08:15"));
+        assertTrue(listOfLessons.getLesson().getEndTime().equals("10:00"));
+        assertTrue(listOfLessons.getLesson().getWeeks().equals("1-8"));
+        assertTrue(listOfLessons.getLesson().getType().equals("w"));
+        assertTrue(listOfLessons.getLesson().getTypeOfWeek()==1);
+        assertTrue(listOfLessons.getLesson().getName().equals("Metodologia projektowania"));
+        assertTrue(listOfLessons.getLesson().getLocation().equals("2E418"));
+        assertTrue(listOfLessons.getLesson().getNameOfLecturer().equals("Glaba M"));
+        assertTrue(listOfLessons.getLesson().getGroups().get(0).equals("6ET.PE"));
     }
 }
