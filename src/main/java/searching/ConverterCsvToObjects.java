@@ -18,62 +18,6 @@ public class ConverterCsvToObjects {
     private String typeOfLesson;
     private Lesson lesson = new Lesson();
 
-    public String[] getTimeOfBeginningAndEnding() {
-        return timeOfBeginningAndEnding;
-    }
-
-    public String getTypeOfLesson() {
-        return typeOfLesson;
-    }
-
-    public void setTypeOfLesson(String typeOfLesson) {
-        this.typeOfLesson = typeOfLesson;
-    }
-
-    public void setTimeOfBeginningAndEnding(String[] timeOfBeginningAndEnding) {
-        this.timeOfBeginningAndEnding = timeOfBeginningAndEnding;
-    }
-
-    public Lesson getLesson() {
-        return lesson;
-    }
-
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
-    }
-
-    public void setTypeOfWeek(int typeOfWeek) {
-        this.typeOfWeek = typeOfWeek;
-    }
-
-    public int getTypeOfWeek() {
-        return typeOfWeek;
-    }
-
-    public String[] getDateList() {
-        return dateList;
-    }
-
-    public void setDateList(String[] dateList) {
-        this.dateList = dateList;
-    }
-
-    public List<String> getElementsWithoutQuotationMarks() {
-        return elementsWithoutQuotationMarks;
-    }
-
-    public List<String> getNeededElementsFromTemporaryStringArray() {
-        return neededElementsFromTemporaryStringArray;
-    }
-
-    public void setTemporaryStringArray(String[] temporaryLesson) {
-        this.temporaryStringArray = temporaryLesson;
-    }
-
-    public String[] getTemporaryStringArray() {
-        return temporaryStringArray;
-    }
-
     public void splitStringFromCsv(String stringFromCsv) {
         setTemporaryStringArray(stringFromCsv.split(";"));
     }
