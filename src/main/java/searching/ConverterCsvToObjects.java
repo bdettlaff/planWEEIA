@@ -9,6 +9,9 @@ import java.util.*;
 @Setter
 public class ConverterCsvToObjects {
 
+
+    public static List<Lesson> finalListOfLessons = new ArrayList<Lesson>();
+
     private String[] temporaryStringArray;
     private List<String> neededElementsFromTemporaryStringArray = new ArrayList<String>();
     private List<String> elementsWithoutQuotationMarks = new ArrayList<String>();
@@ -17,6 +20,7 @@ public class ConverterCsvToObjects {
     private int typeOfWeek;
     private String typeOfLesson;
     private Lesson lesson = new Lesson();
+
 
     public void splitStringFromCsv(String stringFromCsv) {
         setTemporaryStringArray(stringFromCsv.split(";"));
@@ -77,7 +81,22 @@ public class ConverterCsvToObjects {
         lesson.setNameOfLecturer(getElementsWithoutQuotationMarks().get(4));
         listOfGroups.add(getElementsWithoutQuotationMarks().get(5));
         lesson.setGroups(listOfGroups);
-
         setLesson(lesson);
+    }
+
+    public void addToList(){
+        finalListOfLessons.add(getLesson());
+    }
+
+    public void convertStringToLessonObject(String lineFromFile){
+        splitStringFromCsv(lineFromFile);
+        selectNeededStringsFromTemporaryList();
+        deleteQuotationMarksFromStrings();
+        splitDate();
+        convertDotsIntoTypeOfWeek();
+        splitHours();
+        gettingTypeOfLessonFromString();
+        createObject();
+        addToList();
     }
 }

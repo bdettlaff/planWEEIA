@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class FileOpening {
 
-    public void openFile(String group){
+    public void openFile(){
         FileReader fileReader = null;
+        ConverterCsvToObjects converterCsvToObjects = new ConverterCsvToObjects();
         String line;
 
-        Searching searching = new Searching();
 
         try {
             fileReader = new FileReader("18june06.txt");
@@ -23,14 +23,12 @@ public class FileOpening {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         try {
             while((line = bufferedReader.readLine()) != null){
-                searching.searchForLesson(group,line);
+                converterCsvToObjects.convertStringToLessonObject(line);
             }
         } catch (IOException e) {
             System.out.println("BŁĄD ODCZYTU Z PLIKU!");
             System.exit(2);
         }
-
-        searching.printListOfLessons();
 
         try {
             fileReader.close();

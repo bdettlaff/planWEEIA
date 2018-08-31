@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="857.0" prefWidth="1012.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.StudentController">
+<AnchorPane prefHeight="857.0" prefWidth="1153.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.StudentController">
    <children>
-      <ComboBox fx:id="listOfGroupsComboBox" layoutX="418.0" layoutY="56.0" prefWidth="150.0" promptText="Wybierz grupę" />
-      <GridPane fx:id="schedule" layoutX="9.0" layoutY="91.0" prefHeight="730.0" prefWidth="992.0">
+      <ComboBox fx:id="listOfGroupsComboBox" layoutX="961.0" layoutY="41.0" prefWidth="150.0" promptText="Wybierz grupę" />
+      <GridPane fx:id="schedule" layoutX="9.0" layoutY="91.0" prefHeight="760.0" prefWidth="1124.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,5 +34,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <ComboBox fx:id="listOfGroupsComboBox1" layoutX="810.0" layoutY="41.0" prefHeight="25.0" prefWidth="135.0" promptText="Wybierz tydzień" />
    </children>
 </AnchorPane>

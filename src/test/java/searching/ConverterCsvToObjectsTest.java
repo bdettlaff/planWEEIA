@@ -1,6 +1,5 @@
 package searching;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +19,8 @@ public class ConverterCsvToObjectsTest {
         listOfLessons.convertDotsIntoTypeOfWeek();
         listOfLessons.splitHours();
         listOfLessons.gettingTypeOfLessonFromString();
-
+        listOfLessons.createObject();
+        listOfLessons.addToList();
     }
 
     @Test
@@ -41,14 +41,14 @@ public class ConverterCsvToObjectsTest {
 
     @Test
     public void shouldReturnTrueIfStringDoesNotContainsQuotationMarks() {
-        boolean isQuatiationMark = false;
+        boolean isQuotiationMark = false;
 
         for (int i = 0; i < listOfLessons.getElementsWithoutQuotationMarks().size(); i++) {
             if (listOfLessons.getElementsWithoutQuotationMarks().get(i).contains("\"")) {
-                isQuatiationMark = true;
+                isQuotiationMark = true;
             }
         }
-        assertTrue(!isQuatiationMark);
+        assertTrue(!isQuotiationMark);
     }
 
     @Test
@@ -73,7 +73,6 @@ public class ConverterCsvToObjectsTest {
 
     @Test
     public void shouldReturnTrueIfObjectHasProperNamesOnTheAppropriateFields(){
-        listOfLessons.createObject();
         assertTrue(listOfLessons.getLesson().getDayOfWeek().equals("Pn"));
         assertTrue(listOfLessons.getLesson().getStartTime().equals("08:15"));
         assertTrue(listOfLessons.getLesson().getEndTime().equals("10:00"));
