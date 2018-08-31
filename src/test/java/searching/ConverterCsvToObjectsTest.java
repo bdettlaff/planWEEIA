@@ -83,5 +83,12 @@ public class ConverterCsvToObjectsTest {
         assertTrue(listOfLessons.getLesson().getLocation().equals("2E418"));
         assertTrue(listOfLessons.getLesson().getNameOfLecturer().equals("Glaba M"));
         assertTrue(listOfLessons.getLesson().getGroups().get(0).equals("6ET.PE"));
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 13; j++) {
+                System.out.println(i+j+"");
+            }
+            System.out.println("\n");
+        }
     }
 }

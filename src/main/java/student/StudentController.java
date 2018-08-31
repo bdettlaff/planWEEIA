@@ -1,6 +1,6 @@
 package student;
 
-import searching.ConverterCsvToObjects;
+import javafx.scene.control.Label;
 import searching.FileOpening;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,11 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
-import searching.Lesson;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class StudentController implements Initializable {
@@ -62,17 +60,13 @@ public class StudentController implements Initializable {
 
     public void insertButtonsTest() {
 
-        FileOpening fileOpening = new FileOpening();
-        List<Lesson> listOfLessons;
+        // FileOpening fileOpening = new FileOpening();
+        //List<Lesson> listOfLessons;
 
-        fileOpening.openFile();
-        listOfLessons = ConverterCsvToObjects.finalListOfLessons;
+        // fileOpening.openFile();
+        //listOfLessons = ConverterCsvToObjects.finalListOfLessons;
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 13; j++) {
-
-            }
-        }
+        printNameOfDay();
 /*
         int counterOfCommas = 0;
         char signComma = ',';
@@ -111,6 +105,17 @@ public class StudentController implements Initializable {
        /* btn[dayOfWeek][j] = new Button(lesson.substring(hourOfLessonEnding + 2, endOfNameOfLesson));
         btn[dayOfWeek][j].setPrefSize(165, 60);
         schedule.add(btn[dayOfWeek][j], dayOfWeek, j);*/
+    }
+
+    private void printNameOfDay() {
+
+        int j = 0;
+        for (int i = 1; i < 6; i++) {
+            Label label = new Label();
+            label.setText(daysOfTheWeek.get(i-1));
+            label.setId("Label"+daysOfTheWeek.get(i-1));
+            schedule.add(label, i, j);
+        }
     }
 
 
