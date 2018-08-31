@@ -43,6 +43,7 @@ public class StudentController implements Initializable {
         add("17.00");
         add("18.00");
         add("19.00");
+        add("20.00");
     }};
 
     private ObservableList<String> listOfGroups =
@@ -67,6 +68,7 @@ public class StudentController implements Initializable {
         //listOfLessons = ConverterCsvToObjects.finalListOfLessons;
 
         printNameOfDay();
+        printHourOfDay();
 /*
         int counterOfCommas = 0;
         char signComma = ',';
@@ -113,10 +115,20 @@ public class StudentController implements Initializable {
         for (int i = 1; i < 6; i++) {
             Label label = new Label();
             label.setText(daysOfTheWeek.get(i-1));
+            label.setStyle("-fx-background-color: #85d6ff;");
             label.setId("Label"+daysOfTheWeek.get(i-1));
             schedule.add(label, i, j);
         }
     }
 
-
+    private void printHourOfDay(){
+        int i = 0;
+        for (int j = 1; j < 13; j++) {
+            Label label = new Label();
+            label.setText(hoursInTheDay.get(j-1));
+            label.setStyle("-fx-background-color: #49a5ff;");
+            label.setId("Label"+hoursInTheDay.get(j-1));
+            schedule.add(label,i,j);
+        }
+    }
 }
