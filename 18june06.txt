@@ -1,4 +1,3 @@
-;_Event;_EventCat;_Weighting;_Module;_Room;_StaffSurname;_StaffForenames;_Group;_Student;_Protected;_Global;_Description
 "Pn 08:15-10:00 1,3,5,7,9,11,13,15";"l.";"f";"Wstêp do elektroniki /AiR";"k27 B17 211";"Szczeciñska N.";"";"2AiR7";"";"N";"N";""
 "Pn 08:15-10:00 7";"spozaW2";"f";"zI CS Numerical Methods";"";"Lecointe J.P.";"";"";"";"N";"N";"w"
 "Pn 08:15-10:00 1-15";"";"f";"Systemy operacyjne urz¹dzeñ mobilnych";"i16 204";"Skulimowski P";"";"";"";"N";"N";""
@@ -2494,4 +2493,3 @@
 "Pt 18:15-20:00 2,4";"l.w.t";"f";"Programowanie systemów autonomicznych";"i24 C6 010";"Jaworski T";"";"6I bl ISA2";"";"N";"N";""
 "Pt 18:15-20:00 9-10";"c.w.t";"f";"Zarz¹dzanie projektami /EiT";"5E A4";"Anders G";"";"1EiT1";"";"N";"N";""
 "";"c.w.t";"f";"";"";"";"";"1EiT2";"";"";"";""
-

@@ -27,12 +27,12 @@ public class ConverterCsvToObjects {
     }
 
     public void selectNeededStringsFromTemporaryList() {
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[0]);
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[1]);
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[3]);
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[4]);
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[5]);
-        neededElementsFromTemporaryStringArray.add(temporaryStringArray[7]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[0]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[1]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[3]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[4]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[5]);
+            neededElementsFromTemporaryStringArray.add(temporaryStringArray[7]);
     }
 
     public void deleteQuotationMarksFromStrings() {
@@ -69,7 +69,6 @@ public class ConverterCsvToObjects {
     public void createObject(){
         Lesson lesson = new Lesson();
         List<String> listOfGroups = new ArrayList<String>();
-
         lesson.setDayOfWeek(getDateList()[0]);
         lesson.setStartTime(getTimeOfBeginningAndEnding()[0]);
         lesson.setEndTime(getTimeOfBeginningAndEnding()[1]);
