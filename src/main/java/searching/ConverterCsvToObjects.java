@@ -27,16 +27,20 @@ public class ConverterCsvToObjects {
     }
 
     public void selectNeededStringsFromTemporaryList() {
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[0]);
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[1]);
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[3]);
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[4]);
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[5]);
-            neededElementsFromTemporaryStringArray.add(temporaryStringArray[7]);
+        List<String> temporaryList = new ArrayList<String>();
+        temporaryList.add(temporaryStringArray[0]);
+        temporaryList.add(temporaryStringArray[1]);
+        temporaryList.add(temporaryStringArray[3]);
+        temporaryList.add(temporaryStringArray[4]);
+        temporaryList.add(temporaryStringArray[5]);
+        temporaryList.add(temporaryStringArray[7]);
+        System.out.println(temporaryList.get(0));
+        setNeededElementsFromTemporaryStringArray(temporaryList);
     }
 
     public void deleteQuotationMarksFromStrings() {
         String temporaryString;
+        List<String> temporaryList = new ArrayList<String>();
         for (int i = 0; i < neededElementsFromTemporaryStringArray.size(); i++) {
             temporaryString = neededElementsFromTemporaryStringArray.get(i).replace("\"", "");
             elementsWithoutQuotationMarks.add(temporaryString);
@@ -80,6 +84,7 @@ public class ConverterCsvToObjects {
         lesson.setNameOfLecturer(getElementsWithoutQuotationMarks().get(4));
         listOfGroups.add(getElementsWithoutQuotationMarks().get(5));
         lesson.setGroups(listOfGroups);
+        //printElementsOfLesson(lesson);
         setLesson(lesson);
     }
 
@@ -97,5 +102,18 @@ public class ConverterCsvToObjects {
         gettingTypeOfLessonFromString();
         createObject();
         addToList();
+    }
+
+    public void printElementsOfLesson(Lesson lesson){
+        System.out.println(lesson.getDayOfWeek()+" "+
+                lesson.getStartTime()+" "+
+                lesson.getEndTime()+" "+
+                lesson.getWeeks()+" "+
+                lesson.getType()+" "+
+                lesson.getTypeOfWeek()+" "+
+                lesson.getName()+" "+
+                lesson.getLocation()+" "+
+                lesson.getNameOfLecturer()+" "+
+                lesson.getGroups().get(0));
     }
 }
