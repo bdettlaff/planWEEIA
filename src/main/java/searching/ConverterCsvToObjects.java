@@ -20,9 +20,11 @@ public class ConverterCsvToObjects {
     private int typeOfWeek;
     private String typeOfLesson;
     private Lesson lesson = new Lesson();
+    private String flag = "Yes";
 
 
     public void splitStringFromCsv(String stringFromCsv) {
+        setFlag("Yes");
         setTemporaryStringArray(stringFromCsv.split(";"));
     }
 
@@ -34,7 +36,6 @@ public class ConverterCsvToObjects {
         temporaryList.add(temporaryStringArray[4]);
         temporaryList.add(temporaryStringArray[5]);
         temporaryList.add(temporaryStringArray[7]);
-        System.out.println(temporaryList.get(0));
         setNeededElementsFromTemporaryStringArray(temporaryList);
     }
 
@@ -43,8 +44,9 @@ public class ConverterCsvToObjects {
         List<String> temporaryList = new ArrayList<String>();
         for (int i = 0; i < neededElementsFromTemporaryStringArray.size(); i++) {
             temporaryString = neededElementsFromTemporaryStringArray.get(i).replace("\"", "");
-            elementsWithoutQuotationMarks.add(temporaryString);
+            temporaryList.add(temporaryString);
         }
+        setElementsWithoutQuotationMarks(temporaryList);
     }
 
     public void splitDate() {
@@ -63,11 +65,25 @@ public class ConverterCsvToObjects {
     }
 
     public void gettingTypeOfLessonFromString(){
-        setTypeOfLesson(getElementsWithoutQuotationMarks().get(1).substring(0,1));
+        if(getElementsWithoutQuotationMarks().get(1).length()>=1) {
+            if (getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "l" ||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "c" ||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "w" ||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "p") {
+                setTypeOfLesson(getElementsWithoutQuotationMarks().get(1).substring(0, 1));
+            } else {
+                setTypeOfLesson("");
+            }
+        }
     }
 
+
     public void splitHours(){
-        setTimeOfBeginningAndEnding(getDateList()[1].split("-"));
+        if(getElementsWithoutQuotationMarks().get(0).length()>=1){
+            setTimeOfBeginningAndEnding(getDateList()[1].split("-"));
+        }else {
+            setFlag("No");
+        }
     }
 
     public void createObject(){
@@ -84,7 +100,6 @@ public class ConverterCsvToObjects {
         lesson.setNameOfLecturer(getElementsWithoutQuotationMarks().get(4));
         listOfGroups.add(getElementsWithoutQuotationMarks().get(5));
         lesson.setGroups(listOfGroups);
-        //printElementsOfLesson(lesson);
         setLesson(lesson);
     }
 
@@ -100,8 +115,12 @@ public class ConverterCsvToObjects {
         convertDotsIntoTypeOfWeek();
         splitHours();
         gettingTypeOfLessonFromString();
-        createObject();
-        addToList();
+
+        if(getFlag()=="Yes"){
+            createObject();
+            addToList();
+        }
+
     }
 
     public void printElementsOfLesson(Lesson lesson){

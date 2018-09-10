@@ -34,6 +34,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <ComboBox fx:id="listOfGroupsComboBox1" layoutX="810.0" layoutY="41.0" prefHeight="25.0" prefWidth="135.0" promptText="Wybierz tydzień" />
+      <ComboBox fx:id="typeOfWeekComboBox" layoutX="810.0" layoutY="41.0" prefHeight="25.0" prefWidth="135.0" promptText="Wybierz tydzień" />
    </children>
 </AnchorPane>

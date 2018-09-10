@@ -20,6 +20,7 @@ public class MenuController {
         Stage mainStage;
         mainStage = Main.getPrimaryStage();
         mainStage.setScene(newSceneWindow1);
+        mainStage.centerOnScreen();
         mainStage.show();
     }
 
