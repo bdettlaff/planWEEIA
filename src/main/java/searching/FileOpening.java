@@ -1,26 +1,15 @@
 package searching;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileOpening {
 
-    public void openFile(){
-        FileReader fileReader = null;
+    public void openFile() throws FileNotFoundException, UnsupportedEncodingException {
+        File file = new File("18june06.txt");;
         ConverterCsvToObjects converterCsvToObjects = new ConverterCsvToObjects();
         String line;
 
-
-        try {
-            fileReader = new FileReader("18june06.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("BŁĄD PRZY OTWIERANIU PLIKU!");
-            System.exit(1);
-        }
-
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"ISO-8859-2"));
         try {
             while((line = bufferedReader.readLine()) != null){
                 converterCsvToObjects.convertStringToLessonObject(line);
@@ -28,13 +17,6 @@ public class FileOpening {
         } catch (IOException e) {
             System.out.println("BŁĄD ODCZYTU Z PLIKU!");
             System.exit(2);
-        }
-
-        try {
-            fileReader.close();
-        } catch (IOException e) {
-            System.out.println("BŁĄD PRZY ZAMYKANIU PLIKU!");
-            System.exit(3);
         }
     }
 }

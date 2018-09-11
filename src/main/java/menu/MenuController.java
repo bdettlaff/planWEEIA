@@ -27,11 +27,12 @@ public class MenuController {
     @FXML
     private void lecturerButton_onMouseClicked(MouseEvent event) throws IOException{
         Parent window1;
-        window1 = FXMLLoader.load(getClass().getResource("/lecturer/lecturer_window.fxml"));
+        window1 = FXMLLoader.load(getClass().getResource("/lecturer_window.fxml"));
         Scene newSceneWindow1 = new Scene(window1);
         Stage mainStage;
         mainStage = Main.getPrimaryStage();
         mainStage.setScene(newSceneWindow1);
+        mainStage.centerOnScreen();
         mainStage.show();
     }
 

@@ -57,10 +57,12 @@ public class ConverterCsvToObjects {
     public void convertDotsIntoTypeOfWeek(){
         int occurrence =  getElementsWithoutQuotationMarks().get(1).length() - getElementsWithoutQuotationMarks().get(1).replace(".", "").length();
 
-        if(occurrence == 1){
+        if(occurrence == 1) {
             setTypeOfWeek(1);
-        }else{
+        }else if(occurrence == 2){
             setTypeOfWeek(2);
+        }else{
+            setTypeOfWeek(0);
         }
     }
 
