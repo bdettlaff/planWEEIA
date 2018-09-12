@@ -116,14 +116,13 @@ public class LecturerController implements Initializable {
                     }
                 });
 
-        printNameOfDay();
-        printHourOfDay();
-
         filterLessonsByLecturer(getSelectedName(), listOfLessons);
         filterLessonsByWeek(getSelectedTypeOfWeek());
 
         transformHoursAndWeeks();
-
+        printEmptySchedule();
+        printNameOfDay();
+        printHourOfDay();
         printLessons();
     }
 
@@ -136,16 +135,42 @@ public class LecturerController implements Initializable {
 
                     if(getIndexesOfDays().get(z).equals(i)){
                         if(getIndexesOfHoursBeginning().get(z).equals(j)){
-                            TextArea textarea = new TextArea();
-                            textarea.setText(getLessonsOfSelectedName().get(z).getName());
-                            textarea.setStyle("-fx-opacity: 1;");
-                            textarea.setDisable(true);
-                            schedule.add(textarea, i, j);
+                            for(int k = getIndexesOfHoursBeginning().get(z); k<getIndexesOfHoursEnding().get(z); k++){
+                                TextArea textarea = new TextArea();
+                                textarea.setText(getLessonsOfSelectedName().get(z).getName());
+                                textarea.setWrapText(true);
+                                textarea.setStyle("-fx-opacity: 1");
+
+                                if(getLessonsOfSelectedName().get(z).getType().equals("w")){
+                                    textarea.setStyle("-fx-background-color: #b34700");
+                                }else if(getLessonsOfSelectedName().get(z).getType().equals("l")){
+                                    textarea.setStyle("-fx-background-color: #00802b");
+                                }else if(getLessonsOfSelectedName().get(z).getType().equals("c")){
+                                    textarea.setStyle("-fx-background-color: #22A7F0");
+                                }else{
+                                    textarea.setStyle("-fx-background-color: #800080");
+                                }
+
+                                textarea.setDisable(true);
+                                schedule.add(textarea, i, k);
+                            }
                         }
                     }
                 }
             }
             z++;
+        }
+    }
+    private void printEmptySchedule(){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 13; j++) {
+                if(!(i==0 && j==0)){
+                    TextArea textarea = new TextArea();
+                    textarea.setStyle("-fx-opacity: 1;");
+                    textarea.setDisable(true);
+                    schedule.add(textarea, i, j);
+                }
+            }
         }
     }
 
@@ -175,6 +200,7 @@ public class LecturerController implements Initializable {
             TextArea textarea = new TextArea();
             textarea.setText(daysOfTheWeek.get(i-1));
             textarea.setStyle("-fx-opacity: 1;");
+            textarea.setStyle("-fx-background-color: #0086b3");
             textarea.setId("Label"+daysOfTheWeek.get(i-1));
             textarea.setDisable(true);
             schedule.add(textarea, i, j);
@@ -187,6 +213,7 @@ public class LecturerController implements Initializable {
             TextArea textarea = new TextArea();
             textarea.setText(hoursInTheDay.get(j-1));
             textarea.setStyle("-fx-opacity: 1;");
+            textarea.setStyle("-fx-background-color: #006080");
             textarea.setId("Label"+hoursInTheDay.get(j-1));
             textarea.setDisable(true);
             schedule.add(textarea,i,j);
@@ -248,7 +275,6 @@ public class LecturerController implements Initializable {
         }
 
         for(int i = 0; i< getLessonsOfSelectedName().size(); i++){
-            System.out.println(getLessonsOfSelectedName().get(i).getTypeOfWeek());
             if(getLessonsOfSelectedName().get(i).getTypeOfWeek()==weekToFilter){
                 temporary.add(getLessonsOfSelectedName().get(i));
             }

@@ -68,17 +68,16 @@ public class ConverterCsvToObjects {
 
     public void gettingTypeOfLessonFromString(){
         if(getElementsWithoutQuotationMarks().get(1).length()>=1) {
-            if (getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "l" ||
-                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "c" ||
-                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "w" ||
-                    getElementsWithoutQuotationMarks().get(1).substring(0, 1) == "p") {
+            if (getElementsWithoutQuotationMarks().get(1).substring(0, 1).equals("l")||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1).equals("c") ||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1).equals("w") ||
+                    getElementsWithoutQuotationMarks().get(1).substring(0, 1).equals("p")) {
                 setTypeOfLesson(getElementsWithoutQuotationMarks().get(1).substring(0, 1));
             } else {
-                setTypeOfLesson("");
+                setTypeOfLesson("-");
             }
         }
     }
-
 
     public void splitHours(){
         if(getElementsWithoutQuotationMarks().get(0).length()>=1){
