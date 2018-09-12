@@ -5,7 +5,7 @@ import java.io.*;
 public class FileOpening {
 
     public void openFile() throws FileNotFoundException, UnsupportedEncodingException {
-        File file = new File("18june06.txt");;
+        File file = new File("plan.txt");;
         ConverterCsvToObjects converterCsvToObjects = new ConverterCsvToObjects();
         String line;
 

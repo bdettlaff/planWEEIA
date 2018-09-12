@@ -2,7 +2,9 @@ package lecturer;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import lombok.Getter;
 import lombok.Setter;
 import searching.ConverterCsvToObjects;
@@ -36,8 +38,12 @@ public class LecturerController implements Initializable {
     @FXML
     private ComboBox<String> typeOfWeekComboBox;
 
+    @FXML
+    private Button refreshButton;
+
     private int selectedTypeOfWeek;
     private String selectedName = "";
+    private List<Lesson> listOfLessons;
 
     private ArrayList<String> daysOfTheWeek = new ArrayList<String>() {{
         add("Poniedziałek");
@@ -71,7 +77,7 @@ public class LecturerController implements Initializable {
     private ObservableList<String> listOfNames = FXCollections.observableArrayList();
 
     private ObservableList<String> typeOfWeek = FXCollections.observableArrayList(   "x1",
-            "x2");
+            "x2", "Wszystko");
 
     public void initialize(URL location, ResourceBundle resources) {
         listOfNamesComboBox.setItems(listOfNames);
@@ -92,6 +98,7 @@ public class LecturerController implements Initializable {
 
         fileOpening.openFile();
         listOfLessons = ConverterCsvToObjects.finalListOfLessons;
+        setListOfLessons(listOfLessons);
 
         for(int i = 0; i<listOfLessons.size(); i++){
             addToListOfNames(listOfLessons.get(i).getNameOfLecturer());
@@ -103,8 +110,15 @@ public class LecturerController implements Initializable {
                 .addListener(new ChangeListener<String>() {
                     public void changed(ObservableValue<? extends String> observable,
                                         String oldValue, String newValue) {
-                        newValue = newValue.substring(1,2);
-                        setSelectedTypeOfWeek(Integer.parseInt(newValue));
+                        if(newValue.equals("Wszystko")){
+                            newValue="0";
+                            setSelectedTypeOfWeek(Integer.parseInt(newValue));
+                        }else{
+                            newValue = newValue.substring(1,2);
+                            setSelectedTypeOfWeek(Integer.parseInt(newValue));
+                        }
+
+
                     }
                 });
 
@@ -136,8 +150,9 @@ public class LecturerController implements Initializable {
                     if(getIndexesOfDays().get(z).equals(i)){
                         if(getIndexesOfHoursBeginning().get(z).equals(j)){
                             for(int k = getIndexesOfHoursBeginning().get(z); k<getIndexesOfHoursEnding().get(z); k++){
+
                                 TextArea textarea = new TextArea();
-                                textarea.setText(getLessonsOfSelectedName().get(z).getName());
+                                textarea.setText(getLessonsOfSelectedName().get(z).getName()+"\n");
                                 textarea.setWrapText(true);
                                 textarea.setStyle("-fx-opacity: 1");
 
@@ -298,5 +313,17 @@ public class LecturerController implements Initializable {
         }
 
         setLessonsOfSelectedName(temporary);
+    }
+
+    @FXML
+    private void refreshPane(MouseEvent event){
+        filterLessonsByLecturer(getSelectedName(), listOfLessons);
+        filterLessonsByWeek(getSelectedTypeOfWeek());
+
+        transformHoursAndWeeks();
+        printEmptySchedule();
+        printNameOfDay();
+        printHourOfDay();
+        printLessons();
     }
 }

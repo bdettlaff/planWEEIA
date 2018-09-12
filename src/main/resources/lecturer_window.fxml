@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="857.0" prefWidth="1153.0" style="-fx-background-color: #d23232;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.LecturerController">
+<AnchorPane prefHeight="857.0" prefWidth="1153.0" style="-fx-background-image: url('file:Images/background.png')" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.LecturerController">
     <children>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/logoWEEIA.png" />
+            </image>
+        </ImageView>
         <ComboBox fx:id="listOfNamesComboBox" layoutX="921.0" layoutY="41.0" prefHeight="25.0" prefWidth="210.0" promptText="Wybierz prowadzącego" />
         <GridPane fx:id="schedule" layoutX="9.0" layoutY="91.0" prefHeight="760.0" prefWidth="1124.0">
             <columnConstraints>
@@ -35,5 +43,6 @@
             </rowConstraints>
         </GridPane>
         <ComboBox fx:id="typeOfWeekComboBox" layoutX="775.0" layoutY="41.0" prefHeight="25.0" prefWidth="135.0" promptText="Wybierz tydzień" />
+      <Button fx:id="refreshButton" layoutX="704.0" layoutY="41.0" mnemonicParsing="false" onMouseClicked="#refreshPane" text="Odśwież" />
     </children>
 </AnchorPane>
