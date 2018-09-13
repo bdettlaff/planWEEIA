@@ -5,11 +5,13 @@ import java.io.*;
 public class FileOpening {
 
     public void openFile() throws FileNotFoundException, UnsupportedEncodingException {
-        File file = new File("plan.txt");;
+        InputStream in = getClass().getResourceAsStream("/plan.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        //File file = new File("resources/plan.txt");;
         ConverterCsvToObjects converterCsvToObjects = new ConverterCsvToObjects();
         String line;
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"ISO-8859-2"));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in,"Windows-1250"));
         try {
             while((line = bufferedReader.readLine()) != null){
                 converterCsvToObjects.convertStringToLessonObject(line);

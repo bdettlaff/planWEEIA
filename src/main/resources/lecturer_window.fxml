@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="857.0" prefWidth="1153.0" style="-fx-background-image: url('file:Images/background.png')" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.LecturerController">
+<AnchorPane prefHeight="857.0" prefWidth="1153.0" style="-fx-background-image: url('Images/background.png')" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lecturer.LecturerController">
     <children>
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="66.0" fitWidth="193.0" layoutX="26.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../Images/logoWEEIA.png" />
             </image>

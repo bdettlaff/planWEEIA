@@ -152,7 +152,9 @@ public class LecturerController implements Initializable {
                             for(int k = getIndexesOfHoursBeginning().get(z); k<getIndexesOfHoursEnding().get(z); k++){
 
                                 TextArea textarea = new TextArea();
-                                textarea.setText(getLessonsOfSelectedName().get(z).getName()+"\n");
+                                textarea.setText(getLessonsOfSelectedName().get(z).getName() +"\n" +
+                                        getLessonsOfSelectedName().get(z).getWeeks() + " "+
+                                        getLessonsOfSelectedName().get(z).getLocation());
                                 textarea.setWrapText(true);
                                 textarea.setStyle("-fx-opacity: 1");
 
@@ -166,7 +168,7 @@ public class LecturerController implements Initializable {
                                     textarea.setStyle("-fx-background-color: #800080");
                                 }
 
-                                textarea.setDisable(true);
+                               // textarea.setDisable(true);
                                 schedule.add(textarea, i, k);
                             }
                         }
@@ -217,7 +219,7 @@ public class LecturerController implements Initializable {
             textarea.setStyle("-fx-opacity: 1;");
             textarea.setStyle("-fx-background-color: #0086b3");
             textarea.setId("Label"+daysOfTheWeek.get(i-1));
-            textarea.setDisable(true);
+            //textarea.setDisable(true);
             schedule.add(textarea, i, j);
         }
     }
@@ -230,7 +232,7 @@ public class LecturerController implements Initializable {
             textarea.setStyle("-fx-opacity: 1;");
             textarea.setStyle("-fx-background-color: #006080");
             textarea.setId("Label"+hoursInTheDay.get(j-1));
-            textarea.setDisable(true);
+            //textarea.setDisable(true);
             schedule.add(textarea,i,j);
         }
     }
