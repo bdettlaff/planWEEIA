@@ -2,11 +2,16 @@ package lecturer;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
+import menu.Main;
 import searching.ConverterCsvToObjects;
 import searching.FileOpening;
 import javafx.collections.FXCollections;
@@ -18,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import searching.Lesson;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,6 +46,9 @@ public class LecturerController implements Initializable {
 
     @FXML
     private Button refreshButton;
+
+    @FXML
+    private Button backToMenu;
 
     private int selectedTypeOfWeek;
     private String selectedName = "";
@@ -156,6 +165,7 @@ public class LecturerController implements Initializable {
                                         getLessonsOfSelectedName().get(z).getWeeks() + " "+
                                         getLessonsOfSelectedName().get(z).getLocation());
                                 textarea.setWrapText(true);
+                                textarea.setEditable(false);
                                 textarea.setStyle("-fx-opacity: 1");
 
                                 if(getLessonsOfSelectedName().get(z).getType().equals("w")){
@@ -220,6 +230,7 @@ public class LecturerController implements Initializable {
             textarea.setStyle("-fx-background-color: #0086b3");
             textarea.setId("Label"+daysOfTheWeek.get(i-1));
             //textarea.setDisable(true);
+            textarea.setEditable(false);
             schedule.add(textarea, i, j);
         }
     }
@@ -233,6 +244,7 @@ public class LecturerController implements Initializable {
             textarea.setStyle("-fx-background-color: #006080");
             textarea.setId("Label"+hoursInTheDay.get(j-1));
             //textarea.setDisable(true);
+            textarea.setEditable(false);
             schedule.add(textarea,i,j);
         }
     }
@@ -328,4 +340,17 @@ public class LecturerController implements Initializable {
         printHourOfDay();
         printLessons();
     }
+
+    @FXML
+    private void backToMenu(MouseEvent event) throws IOException {
+        Parent window1;
+        window1 = FXMLLoader.load(getClass().getResource("/menu_window.fxml"));
+        Scene newSceneWindow1 = new Scene(window1);
+        Stage mainStage;
+        mainStage = Main.getPrimaryStage();
+        mainStage.setScene(newSceneWindow1);
+        mainStage.centerOnScreen();
+        mainStage.show();
+    }
+
 }
