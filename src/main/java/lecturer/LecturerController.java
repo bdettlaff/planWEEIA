@@ -168,14 +168,16 @@ public class LecturerController implements Initializable {
                                 textarea.setEditable(false);
                                 textarea.setStyle("-fx-opacity: 1");
 
+                                //textArea.setStyle("-fx-control-inner-background:#000000; -fx-highlight-fill: #00ff00; -fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00; ");
+
                                 if(getLessonsOfSelectedName().get(z).getType().equals("w")){
-                                    textarea.setStyle("-fx-background-color: #b34700");
+                                    textarea.setStyle("-fx-control-inner-background: #b34700");
                                 }else if(getLessonsOfSelectedName().get(z).getType().equals("l")){
-                                    textarea.setStyle("-fx-background-color: #00802b");
+                                    textarea.setStyle("-fx-control-inner-background: #00802b");
                                 }else if(getLessonsOfSelectedName().get(z).getType().equals("c")){
-                                    textarea.setStyle("-fx-background-color: #22A7F0");
+                                    textarea.setStyle("-fx-control-inner-background: #22A7F0");
                                 }else{
-                                    textarea.setStyle("-fx-background-color: #800080");
+                                    textarea.setStyle("-fx-control-inner-background: #800080");
                                 }
 
                                // textarea.setDisable(true);
@@ -301,11 +303,19 @@ public class LecturerController implements Initializable {
         if(weekToFilter!=1 && weekToFilter !=2){
             weekToFilter=0;
             setSelectedTypeOfWeek(weekToFilter);
-        }
 
-        for(int i = 0; i< getLessonsOfSelectedName().size(); i++){
-            if(getLessonsOfSelectedName().get(i).getTypeOfWeek()==weekToFilter){
-                temporary.add(getLessonsOfSelectedName().get(i));
+            for(int i = 0; i< getLessonsOfSelectedName().size(); i++){
+                if(getLessonsOfSelectedName().get(i).getTypeOfWeek()==weekToFilter ||
+                        getLessonsOfSelectedName().get(i).getTypeOfWeek()==1 ||
+                        getLessonsOfSelectedName().get(i).getTypeOfWeek()==2){
+                    temporary.add(getLessonsOfSelectedName().get(i));
+                }
+            }
+        }else {
+            for (int i = 0; i < getLessonsOfSelectedName().size(); i++) {
+                if (getLessonsOfSelectedName().get(i).getTypeOfWeek() == weekToFilter) {
+                    temporary.add(getLessonsOfSelectedName().get(i));
+                }
             }
         }
 

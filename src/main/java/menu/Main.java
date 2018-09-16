@@ -31,6 +31,9 @@ public class Main extends Application {
         primaryStage.setTitle("planWEEIA");
         primaryStage.setScene(firstScene);
         primaryStage.setResizable(false);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 4);
         primaryStage.centerOnScreen();
         this.setPrimaryStage(primaryStage);
         primaryStage.show();

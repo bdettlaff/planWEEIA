@@ -1,11 +1,15 @@
 package searching;
 
 import java.io.*;
+import java.io.IOException;
+
+
 
 public class FileOpening {
 
     public void openFile() throws FileNotFoundException, UnsupportedEncodingException {
         InputStream in = getClass().getResourceAsStream("/plan.txt");
+        //należy zamienić na String file = System.getProperty("user.home") + "\\plan.txt";
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         //File file = new File("resources/plan.txt");;
         ConverterCsvToObjects converterCsvToObjects = new ConverterCsvToObjects();
@@ -21,6 +25,7 @@ public class FileOpening {
             System.exit(2);
         }
     }
+
 }
 
 
